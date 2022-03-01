@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin breakpoint {
+    @media screen and (min-width: 900px) {
+        @content;
+    }
+}
+
+$Blue: hsl(246, 80%, 60%);
+$LightOrange: hsl(15, 100%, 70%);
+$SoftBlue: hsl(195, 74%, 62%);
+$LightRed: hsl(348, 100%, 68%);
+$LimeGreen: hsl(145, 58%, 55%);
+$Violet: hsl(264, 64%, 52%);
+$SoftOrange: hsl(43, 84%, 65%);
+$VeryDarkBlue: hsl(226, 43%, 10%);
+$DarkBlue: hsl(235, 46%, 20%);
+$DesaturatedBlue: hsl(235, 45%, 61%);
+$PaleBlue: hsl(236, 100%, 87%);
+
+body, #root {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
+    background: $VeryDarkBlue;
+    color: $PaleBlue;
+    padding: 2rem;
+
+    @include breakpoint {
+        display: flex;
+        padding: 0 .5rem;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.header {
+    width: 100%;
+    border-radius: 30px;
+    background: $DarkBlue;
+
+    @include breakpoint {
+        width: 250px;
+        height: auto;
+    }
+
+    &_profile {
+        background: $Blue;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 2rem 0;
+
+        @include breakpoint {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 2rem;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border: 4px solid $PaleBlue;
+            border-radius: 50%;
+        }
+
+        &_text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            span {
+                font-size: 18px;
+            }
+
+            strong {
+                font-size: 20px;
+
+                @include breakpoint {
+                    font-size: 36px;
+                }
+            }
+        }
+    }
+
+    &_button {
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        @include breakpoint {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 2rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: $PaleBlue;
+            font-size: 18px;
+            border-bottom: 2px solid transparent;
+            padding: .3rem 0;
+            cursor: pointer;
+
+            @include breakpoint {
+                padding: .9rem 0 .3rem;
+            }
+
+            &:hover {
+                border-bottom: 2px solid $PaleBlue;
+                transition: all .2s ease;
+            }
+            
+        }
+    }
+}
+
+.main {
+    margin-top: 2rem;
+
+    @include breakpoint {
+        display: grid;
+        grid-template-columns: 210px 210px 210px;
+        gap: 10px;
+        margin: 0 0 0 1rem;
+    }
+
+    &_content {
+        width: 100%;
+        height: auto;
+        margin-bottom: 160px;
+
+        &_wrapper {
+            position: relative;
+            top: -20px;
+            background: $DarkBlue;
+            display: flex;
+            flex-direction: column;
+            border-radius: 30px;
+            padding: 2rem;
+
+            &_first {
+                display: flex;
+                justify-content: space-between;
+
+                @include breakpoint {
+                    align-items: center;
+                }
+
+                > img {
+                    width: 30px;
+                    height: 7px;
+                }
+
+                h2 {
+                    font-size: 24px;
+                }
+            }
+
+            &_second {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+
+                @include breakpoint {
+                    align-items: flex-start;
+                    flex-direction: column;
+                }
+                
+                .hrs {
+                    font-size: 36px;
+                    font-weight: 300;
+
+                    @include breakpoint {
+                        font-size: 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+%imgBG {
+        width: 100%;
+        height: 70px;
+        position: relative;
+        top: 0;
+}
+
+.Work {
+    width: 100%;
+    height: 80px;
+    background: $LightOrange;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-work.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
+
+.Play {
+    width: 100%;
+    height: 80px;
+    background: $SoftBlue;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-play.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
+
+.Study {
+    width: 100%;
+    height: 80px;
+    background: $LightRed;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-study.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
+
+
+
+.Exercise {
+    width: 100%;
+    height: 80px;
+    background: $LimeGreen;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-exercise.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
+
+.Social {
+    width: 100%;
+    height: 80px;
+    background: $Violet;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-social.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
+
+.SelfCare {
+    width: 100%;
+    height: 80px;
+    background: $SoftOrange;
+    border-radius: 30px 30px 0 0;
+
+    &_img {
+        @extend %imgBG;
+        background: url('./images/icon-self-care.svg') no-repeat;
+        background-position: 80%;
+        background-size: 25%;
+    }
+}
